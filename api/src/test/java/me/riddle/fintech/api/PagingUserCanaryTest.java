@@ -2,14 +2,13 @@ package me.riddle.fintech.api;
 
 import org.junit.jupiter.api.Test;
 
-/**
- * A stub for canary test.
- */
+import static org.junit.jupiter.api.Assertions.*;
+
 class PagingUserCanaryTest {
 
     @Test
-    void testPagingUserCanary() {
-        System.out.println("PagingUserCanary Stub");
+    void testCanaryCreation() {
+        PagingUserCanary canary = new PagingUserCanary("test-token");
+        assertNotNull(canary);
     }
-
 }

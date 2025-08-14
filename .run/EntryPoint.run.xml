@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="EntryPoint" type="Application" factoryName="Application" nameIsGenerated="true">
+    <envs>
+      <env name="PAGERDUTY_API_TOKEN" value="your_token_here" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="me.riddle.fintech.api.EntryPoint" />
+    <module name="fintech-canary.api.main" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="me.riddle.fintech.api.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
