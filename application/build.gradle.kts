@@ -12,6 +12,8 @@ dependencies {
 
     testImplementation(libs.junit.jupiter)
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation(libs.slf4j.api)
+    testRuntimeOnly(libs.logback.classic)
 }
 
 tasks.test {
