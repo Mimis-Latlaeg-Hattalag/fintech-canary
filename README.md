@@ -125,3 +125,11 @@ export PAGERDUTY_API_TOKEN=your_token_here ./gradlew :api:run
 - **Statistics**: View distribution by time zone and role
 - **Export**: Save all users to CSV or JSON format
 - **Performance Monitoring**: Track API response times
+
+## CONCLUSIONS:
+
+1. Doesn't pay to reinvent the wheel -- I love https://ktor.io/ client instead.
+    1. This took 5 hours, and `ktor` client takes 5 minutes and manages paging better than I can.
+2. Consider [HAL](https://en.wikipedia.org/wiki/HAL_(software) "Hardware Abstraction Layer ") for API design -- this removes the need for API versioning and adds some amazing behavior exportation...
+
+Toodles!
