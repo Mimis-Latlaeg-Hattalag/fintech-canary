@@ -50,3 +50,26 @@ So I will implement the model next:
 
 ### a. Domain Model
 
+1. I used the Model Builder to render the DTOs.
+2. Wrote manual tests to validate.
+3. Reviewed a few old implementations and borrowed from Spring Rest Template.
+4. Jackson `@JsonAnySetter` and Records is a problem; Using `@JsonCreator` - the customer was worried about future API changes.
+
+### b. Implement the simplest service over the real model.
+
+1. Implement Naive Service with that primitive client.
+2. Implement basic tests for Java-native pitfalls, but no functional test.
+
+### c. Having the service available and hard-bolted -- implement api entry point and play.
+
+1. Added Canary methods to properly exercise remote API.
+2. Bootstrapped `main` with some methods.
+3. Added token as ENV variable
+
+
+Works as expected.
+
+## The refactoring
+
+In Red-Green-Refactor cycle it's time to refine this code.
+
