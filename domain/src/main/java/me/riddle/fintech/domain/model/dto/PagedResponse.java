@@ -10,10 +10,7 @@ import java.util.Objects;
  * Handles pagination metadata and data collection.
  *
  * @param <T> The type of items in the paginated collection
- *
- * FixMe: revisit "unused after all methods tested.
  */
-@SuppressWarnings("unused")
 public record PagedResponse<T>(
         @JsonProperty("limit") int limit,
         @JsonProperty("offset") int offset,

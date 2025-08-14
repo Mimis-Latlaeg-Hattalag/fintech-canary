@@ -9,10 +9,7 @@ import java.util.List;
  * Handles the "users" wrapper field in the API response.
  * Use classic approach with manual sliding windows:
  * (Gracefully copied from Rest Template original implementation)
- * <p>
- * FixMe: Make an optimisation pass after actual retrieval.
  */
-@SuppressWarnings("unused")
 public record PagerDutyUsersResponse(
     @JsonProperty("users") List<PagerDutyUser> users,
     @JsonProperty("limit") int limit,
