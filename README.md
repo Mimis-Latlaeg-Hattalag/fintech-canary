@@ -153,3 +153,53 @@ OR:
 2. Consider [HAL](https://en.wikipedia.org/wiki/Hypertext_Application_Language) for API design -- this removes the need for API versioning and adds some amazing behavior exportation...
 
 Toodles!
+
+
+## Followup and final thoughts:
+
+Practice is never futility. But time is precious.
+There are few things that I just skimped over in the implementation.
+Now that the crunch is over we can handle these in stride by GitHub issues.
+Here is the list of things I still remember:
+
+1: Export in the `InteractivePagerDutyCanary` could pick a sensible default folder and format.
+
+2: `PagedResponse.currentPageNumber` will throw `ArithmeticException` when `limit` is 0 and is tested for such. 
+This is a common Java paradigm but is bad engineering - Java is full of these. I'd add `if (limit == 0) return 1;`.
+
+3: The `PagerDutyUser.create` is static but returns via constructor - there are patterns for that.
+
+4: `PagerDutyUserService` is lacking any connection pooling. Should create at least one `HttpClient` per service instance.
+(Or, use appropriate libraries like OkHttp, WebClient, Ktor, etc., defeating the purpose ofr this exercise.)
+Also, there isn't any retry logic implemented. This just goes to show what we get for free in an OSS library.
+
+5: No request/response logging/intercepting/monitoring/crosscutting. This should behove people to NEVER utilize `HttpClient` directly.
+
+6: `EntryPoint` demo, sure, but security is an afterthought both on the client and server sides. Inject runtime secrets if another library is permittable.
+
+7: `PagingUserCanary` serves its purpose as a smoker. but all the hardcoding, like page sizing, is pure cringe hidden only by Java absurd verbosity. Consider manifests.
+
+8: `InteractivePagerDutyCanary` oh, just noticed a resource leak: Scanner never closed. Needs try with resources or better.<br/>
+`Thread.sleep` is a dirty hack. Exponential backoff at least would be better.<br/>
+CSV export is bare bones with possible injection bugs if data has new lines or delimiters.<br/>
+Clearscreen only works on ANSI terminals - we care NOT for Winderz, but with a little bit of time much better is possible.<br/>
+
+**Security Concerns** - a whole issue of its own! Sure, this is just a toy, nobody does things this bad in production.<br/>
+But simply being on the web this thang creates bad examples. Don't even bother with tokens for toys OR implement correctly.
+I suspect this was just done so people don't abuse the free API for fun. But there are planty who will just copy-paste code they see.<br/>
+Should parse `X-RateLimit-*` in he header too.<br/>
+Neither input, marshalling/unmarshalling or other parsing is validated.<br/>
+
+**Performance Issues** - yet another massive DON'T for using HttpClient directly.<br/>
+a) No catching without some hefty work added.<br/>
+b) Synchronous API calls only - lot's can be improved on that.<br/>
+c) Large memory footprint with this single brick loaded.<br/>
+d) And no connection pooling as already mentioned.
+
+**Personal pet peeve:** I'd written it haphazardly and sporadically while doing other things.<br/>
+But the inconsistent use of `var`, for example bothers me. You know what?! It does not! - Just use Kotlin 😜 <br/>
+Should extract constants. Jury is out on magic numbers. And some method names are too long - again, Java for you. 
+
+Well, that's about all I can remember.
+
+Toodles!

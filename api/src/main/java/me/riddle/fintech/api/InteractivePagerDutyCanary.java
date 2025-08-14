@@ -335,15 +335,15 @@ public class InteractivePagerDutyCanary {
             return;
         }
 
-        System.out.print("Export format (csv/json): ");
+        System.out.print("Export format ((c)sv/(j)son): ");
         var format = scanner.nextLine().trim().toLowerCase();
 
         try {
             var filename = "pagerduty_users_" + Instant.now().getEpochSecond();
 
             switch (format) {
-                case "csv" -> exportToCsv(filename + ".csv");
-                case "json" -> exportToJson(filename + ".json");
+                case "csv", "c" -> exportToCsv(filename + ".csv");
+                case "json", "j" -> exportToJson(filename + ".json");
                 default -> printError("Invalid format. Choose 'csv' or 'json'");
             }
         } catch (Exception e) {
