@@ -1,6 +1,6 @@
 # The FinTech Canary
 
-This came up as a part of my interest ina particular FinTech.
+This came up as a part of my interest in a particular FinTech.
 The constraints:
 
 - Bare Functional Java.
@@ -16,15 +16,15 @@ And, the request is:
 
 ## Stumping Grounds
 
-I ws stumped by this request. And there are several reasons for that:
+I was stumped by this request. And there are several reasons for that:
 
 - It is for lead engineering position.
 - No production quality code will roll its own client.
-  - The standard is mature, well weathered and unchanging;
-  - Many libraries exist that seamlessly handle complexities like paging;
-  - Mature libraries like Ktor, OkHttp, and WebClient (Spring) exist.
+    - The standard is mature, well weathered and unchanging;
+    - Many libraries exist that seamlessly handle complexities like paging;
+    - Mature libraries like Ktor, OkHttp, and WebClient (Spring) exist.
 
-Nevertheless I got intrigued by the HttClient which doesn't share DSL with any of the mainstream libraries today.
+Nevertheless I got intrigued by the HttpClient which doesn't share DSL with any of the mainstream libraries today.
 
 ## The Solution
 
@@ -38,9 +38,9 @@ First questions I had:
 So, I started digging and came up with the following:
 
 1. Yes!, in fact. Surprising. The schema is here: https://github.com/PagerDuty/api-schema
-2. Yes, it is paging. Hand-rolled by `limit`, `offset`, `more` and `total` fields. And `limit` max ia 100. Basically, not following any standard.
+2. Yes, it is paging. Hand-rolled by `limit`, `offset`, `more` and `total` fields. And `limit` max is 100. Basically, not following any standard.
 3. API Token in header: `Authorization: Token token=your_token_here` is all we got. Account-wide rate limiting at 429, so I have limited tinkering.
-4. API v2 has been stable since ~2016. So i will need to think on faults and simulation of one later. Perhaps at the end of my tinkering.
+4. API v2 has been stable since ~2016. So I will need to think on faults and simulation of one later. Perhaps at the end of my tinkering.
 
 Also, reading the scheme that I found on their GitHub repo (PagerDuty/api-schema) this domain DOES have a canonical name - `PagerDutyUser`.
 So I will implement the model next:
@@ -75,13 +75,13 @@ In Red-Green-Refactor cycle it's time to refine this code.
 
 ### d. Added full tests to the service.
 
-1. Added proper ful-featured Unit tests:
-   1. Stubbed and proxied with Mokito -- didn't like it -- I don't understand the client.
-   2. Added private constructor to the service.
-   3. Implemented full stubbing of the client to learn exactly how it's written.
+1. Added proper full-featured Unit tests:
+    1. Stubbed and proxied with Mockito -- didn't like it -- I don't understand the client.
+    2. Added private constructor to the service.
+    3. Implemented full stubbing of the client to learn exactly how it's written.
 2. Added 2 Pre-Production tests -- client wonders about API changes before release.
-   1. Curl
-   2. URL
+    1. Curl
+    2. URL
 
 ### e. Added Pre-production tests
 
@@ -105,21 +105,41 @@ Full-featured canary with:
 
 ### Simple Demo Mode
 
+**Setup:**
+
 ```bash
-export PAGERDUTY_API_TOKEN=your_token_here ./gradlew :api:run
-# Then choose option 1
+export PAGERDUTY_API_TOKEN=your_token_here
+```
+
+**Run Simple Demo Mode:**
+
+
+_If gradle installed locally:_
+
+```bash
+gradle :api:run
+```
+
+OR:
+
+```bash
+./gradlew :api:run
 ```
 
 ### Interactive Explorer Mode
-```bash
-export PAGERDUTY_API_TOKEN=your_token_here ./gradlew :api:run
-# Then choose option 2
 
-# Or directly:
+```bash
+gradle :api:run --args="--interactive"
+```
+
+OR:
+
+```bash
 ./gradlew :api:run --args="--interactive"
 ```
 
 ### Features of Interactive Mode:
+
 - **Browse Users**: Navigate through pages with detailed user information
 - **Search**: Find users by name or email in loaded data
 - **Statistics**: View distribution by time zone and role
@@ -130,6 +150,6 @@ export PAGERDUTY_API_TOKEN=your_token_here ./gradlew :api:run
 
 1. Doesn't pay to reinvent the wheel -- I love https://ktor.io/ client instead.
     1. This took 5 hours, and `ktor` client takes 5 minutes and manages paging better than I can.
-2. Consider [HAL](https://en.wikipedia.org/wiki/HAL_(software) "Hardware Abstraction Layer ") for API design -- this removes the need for API versioning and adds some amazing behavior exportation...
+2. Consider [HAL](https://en.wikipedia.org/wiki/Hypertext_Application_Language) for API design -- this removes the need for API versioning and adds some amazing behavior exportation...
 
 Toodles!
