@@ -4,8 +4,6 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 
-//FixMe: Why does this exist?
-@SuppressWarnings("unused")
 public record Account(
         String id,
         String customerId,

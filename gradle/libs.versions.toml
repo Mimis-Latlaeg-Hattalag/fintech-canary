@@ -1,11 +1,11 @@
-# FixMe: Look up actual versions before advancing
 [versions]
 logback = "1.5.18"
 slf4j = "2.0.17"
-junit = "5.10.0"
-
+junit = "5.13.4"
+vavr = "0.10.7"
 
 [libraries]
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
+vavr = { module = "io.vavr:vavr", version.ref = "vavr" }

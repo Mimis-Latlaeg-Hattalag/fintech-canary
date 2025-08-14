@@ -4,6 +4,7 @@ plugins {
 }
 
 dependencies {
+    implementation(libs.vavr)
     testImplementation(libs.junit.jupiter)
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
