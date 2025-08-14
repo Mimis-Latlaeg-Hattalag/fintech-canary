@@ -24,10 +24,15 @@ public class PagerDutyUserService {
     private final String apiToken;
 
     public PagerDutyUserService(String apiToken) {
-        this.apiToken = apiToken;
-        this.httpClient = HttpClient.newBuilder()
+        this(apiToken, HttpClient.newBuilder()
                 .connectTimeout(Duration.ofSeconds(10))
-                .build();
+                .build());
+    }
+
+    // Package-private constructor for testing
+    PagerDutyUserService(String apiToken, HttpClient httpClient) {
+        this.apiToken = apiToken;
+        this.httpClient = httpClient;
         this.objectMapper = new ObjectMapper();
     }
 

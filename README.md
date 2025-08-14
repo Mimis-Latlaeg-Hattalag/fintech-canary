@@ -73,3 +73,10 @@ Works as expected.
 
 In Red-Green-Refactor cycle it's time to refine this code.
 
+### d. Added full tests to the service.
+
+1. Added proper ful-featured Unit tests:
+   1. Stubbed and proxied with Mokito -- didn't like it -- I don't understand the client.
+   2. Added private constructor to the service.
+   3. Implemented full stubbing of the client to learn exactly how it's written.
+2. ToDo: Add Per-Prod tests next.
