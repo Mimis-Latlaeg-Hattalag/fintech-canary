@@ -19,7 +19,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("me.riddle.fintech.api.Main")
+    mainClass.set("me.riddle.fintech.api.EntryPoint")
 }
 
 tasks.test {
