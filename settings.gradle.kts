@@ -13,4 +13,4 @@ pluginManagement {
 }
 
 rootProject.name = "fintech-canary"
-include("domain", "application")
+include("domain", "application", "api")
