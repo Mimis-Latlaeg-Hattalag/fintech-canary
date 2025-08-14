@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="PagerDutyPreProductionURLTest" type="GradleRunConfiguration" factoryName="Gradle">
+  <configuration default="false" name="fintech-canary [interactive]" type="GradleRunConfiguration" factoryName="Gradle">
     <ExternalSystemSettings>
       <option name="env">
         <map>
@@ -15,17 +15,15 @@
       </option>
       <option name="taskNames">
         <list>
-          <option value=":application:test" />
-          <option value="--tests" />
-          <option value="&quot;me.riddle.fintech.application.service.dto.PagerDutyPreProductionURLTest&quot;" />
+          <option value="interactive" />
         </list>
       </option>
       <option name="vmOptions" />
     </ExternalSystemSettings>
-    <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+    <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
     <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
     <DebugAllEnabled>false</DebugAllEnabled>
-    <RunAsTest>true</RunAsTest>
+    <RunAsTest>false</RunAsTest>
     <method v="2" />
   </configuration>
 </component>

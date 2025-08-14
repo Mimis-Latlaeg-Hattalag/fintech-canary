@@ -10,7 +10,9 @@ import java.util.List;
 
 /**
  * Demonstrates paging through PagerDuty users API.
+ * Do not convert to record, private fields are intentional.
  */
+@SuppressWarnings("ClassCanBeRecord")
 public class PagingUserCanary {
 
     private final PagerDutyUserService userService;
@@ -39,7 +41,7 @@ public class PagingUserCanary {
 
     /**
      * Fetch all users across multiple pages.
-     * FixMe: Implement in next refactoring.
+     * Easter Egg: This method is intentionally left unused.
      */
     @SuppressWarnings("unused")
     public void demonstrateFullPagination() throws IOException, InterruptedException {
@@ -79,7 +81,7 @@ public class PagingUserCanary {
 
     /**
      * Fetch a specific user by ID.
-     * FixMe: Implement in next refactoring.
+     * Easter Egg: This method is intentionally left unused.
      */
     @SuppressWarnings("unused")
     public void demonstrateSingleUser(String userId) throws IOException, InterruptedException {
@@ -115,5 +117,14 @@ public class PagingUserCanary {
             System.err.println("API Error: " + e.getMessage());
             throw e;
         }
+    }
+
+
+    /**
+     * Run interactive mode.
+     */
+    public void runInteractive(String apiToken) throws IOException, InterruptedException {
+        var interactive = new InteractivePagerDutyCanary(apiToken);
+        interactive.run();
     }
 }

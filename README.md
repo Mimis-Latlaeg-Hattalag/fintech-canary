@@ -82,3 +82,46 @@ In Red-Green-Refactor cycle it's time to refine this code.
 2. Added 2 Pre-Production tests -- client wonders about API changes before release.
    1. Curl
    2. URL
+
+### e. Added Pre-production tests
+
+1. Created tests that validate our implementation against alternative HTTP approaches (URL and curl)
+2. Tests run automatically when PAGERDUTY_API_TOKEN is set
+3. Validates pagination with various offset/limit combinations
+
+### f. Created Interactive User Explorer
+
+Full-featured canary with:
+- Visual pagination with ANSI colors
+- Page navigation (next, previous, jump to page)
+- Configurable page size
+- User search functionality
+- Statistics collection (time zones, roles)
+- Data export (CSV/JSON)
+- Rate limit handling
+- Performance metrics
+
+## Usage
+
+### Simple Demo Mode
+
+```bash
+export PAGERDUTY_API_TOKEN=your_token_here ./gradlew :api:run
+# Then choose option 1
+```
+
+### Interactive Explorer Mode
+```bash
+export PAGERDUTY_API_TOKEN=your_token_here ./gradlew :api:run
+# Then choose option 2
+
+# Or directly:
+./gradlew :api:run --args="--interactive"
+```
+
+### Features of Interactive Mode:
+- **Browse Users**: Navigate through pages with detailed user information
+- **Search**: Find users by name or email in loaded data
+- **Statistics**: View distribution by time zone and role
+- **Export**: Save all users to CSV or JSON format
+- **Performance Monitoring**: Track API response times
