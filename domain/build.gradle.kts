@@ -4,6 +4,8 @@ plugins {
 }
 
 dependencies {
+    implementation(libs.fasterxml.jackson)
+
     testImplementation(libs.junit.jupiter)
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }

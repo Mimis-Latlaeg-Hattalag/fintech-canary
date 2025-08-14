@@ -8,7 +8,7 @@ import java.net.http.HttpClient;
 /**
  * A stub for an actual remote user service test
  */
-class RemoteUserServiceTest {
+class PagerDutyUserServiceTest {
 
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private HttpClient httpClient;

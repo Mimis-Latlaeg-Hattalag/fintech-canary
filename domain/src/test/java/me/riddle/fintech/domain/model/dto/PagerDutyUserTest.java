@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 /**
  * A stub for Canary user DTO,
  */
-class RemoteUserTest {
+class PagerDutyUserTest {
 
     @Test
     void testRemoteUser() {
