@@ -26,6 +26,8 @@ I was stumped by this request. And there are several reasons for that:
 
 Nevertheless I got intrigued by the HttpClient which doesn't share DSL with any of the mainstream libraries today.
 
+NOTE: [Here is what I would actually send my customer!](https://github.com/Mimis-Latlaeg-Hattalag/fintech-future-canary "FinTech Future Canary, the competent take 😜")
+
 ## The Solution
 
 First questions I had:
